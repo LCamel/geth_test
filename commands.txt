@@ -5,3 +5,5 @@ s/7df9a875a174b3bc565e6424a0050ebc1b2d1d82/43bf0b941c35f941844d98609910b382195d6
 s/f41c74c9ae680c1aa78f42e5647a62f353b7bdde/82b284ec34e1221c2ebaa665f755d22107f167ae/g
 
 geth init --datadir test1 genesis_clique.json
+
+geth --datadir test1 --networkid 7777 --nodiscover --nat=none --unlock 0x43bf0b941c35f941844d98609910b382195d68ad --mine
