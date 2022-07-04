@@ -28,9 +28,19 @@ eth.sendTransaction({from:eth.accounts[1], to:eth.accounts[0], value:0, gasPrice
 
 init is an EVM-code fragment; it returns the body, a second fragment of code that executes each time the account receives a message call (either through a transaction or due to the internal execution of code). init is executed only once at account creation and gets discarded immediately thereafter.
 
+save "0xab" to storage "0xcd"
 > t = eth.sendTransaction({from:eth.accounts[0], to:null, data: "0x60ab60cd55", gasPrice: 0})
 "0xc0312a18026f9085125bba637f65535cd85d8e236c5ed5cb842df908f306cc4b"
 > c = eth.getTransactionReceipt(t).contractAddress
 "0x63d4eda7dd6d52681e4a8a226c0186ebc0607ef6"
+> eth.getStorageAt(c, "0xcd")
+"0x00000000000000000000000000000000000000000000000000000000000000ab"
+
+
+save CallValue "0xab" (opcode 0x34) to storage "0xcd"
+> t = eth.sendTransaction({from:eth.accounts[0], to:null, data:"0x3460cd55", gasPrice:0, value:0xab})
+"0x54e08ca4802f9e204ce9603e6ef3552237911d742d98a40d5adadba803ca9a0d"
+> c = eth.getTransactionReceipt(t).contractAddress
+"0xb44842c84caf6ece9fb598b890eba52aa0035f33"
 > eth.getStorageAt(c, "0xcd")
 "0x00000000000000000000000000000000000000000000000000000000000000ab"
