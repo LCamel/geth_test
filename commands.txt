@@ -10,9 +10,14 @@ geth --datadir test1 --networkid 7777 --nodiscover --nat=none --unlock 0x43bf0b9
 
 geth --datadir test1 --networkid 7777 --nodiscover --nat=none --unlock 0x43bf0b941c35f941844d98609910b382195d68ad,0x82b284ec34e1221c2ebaa665f755d22107f167ae --mine
 
+geth --datadir test1 --networkid 7777 --nodiscover --nat=none --unlock 0x43bf0b941c35f941844d98609910b382195d68ad,0x82b284ec34e1221c2ebaa665f755d22107f167ae --mine --password password.txt
+
 eth.getBalance(eth.accounts[0])
 eth.getBalance(eth.accounts[1])
+console.log(eth.getBalance(eth.accounts[0]) + " " + eth.getBalance(eth.accounts[1]));
+
 eth.sendTransaction({from:eth.accounts[0], to:eth.accounts[1], value:0, gasPrice:0})
 eth.sendTransaction({from:eth.accounts[0], to:eth.accounts[1], value:0, gasPrice:1})
 eth.sendTransaction({from:eth.accounts[1], to:eth.accounts[0], value:0, gasPrice:0})
 eth.sendTransaction({from:eth.accounts[1], to:eth.accounts[0], value:0, gasPrice:1})
+
